@@ -1,0 +1,381 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.vanuoc.invalid/3.0/turn-input.schema.json",
+  "title": "Vanuoc v3.0 - completed original user turn",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "session_id",
+    "request_id",
+    "draft_id",
+    "turn_id",
+    "input_id",
+    "received_at",
+    "source",
+    "text",
+    "trusted"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "3.0"
+    },
+    "kind": {
+      "const": "user_turn"
+    },
+    "session_id": {
+      "$ref": "#/$defs/id"
+    },
+    "request_id": {
+      "$ref": "#/$defs/id"
+    },
+    "draft_id": {
+      "$ref": "#/$defs/id"
+    },
+    "turn_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "input_id": {
+      "$ref": "#/$defs/id"
+    },
+    "received_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "$ref": "#/$defs/source"
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "trusted": {
+      "$ref": "#/$defs/trusted"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "source": {
+            "properties": {
+              "channel": {
+                "const": "voice"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "trusted": {
+            "properties": {
+              "input_timing": {
+                "properties": {
+                  "basis": {
+                    "enum": [
+                      "voice_adapter",
+                      "unknown"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "source": {
+            "not": {
+              "required": [
+                "asr"
+              ]
+            }
+          },
+          "trusted": {
+            "properties": {
+              "input_timing": {
+                "properties": {
+                  "basis": {
+                    "enum": [
+                      "text_adapter",
+                      "unknown"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "actor_id",
+        "actor_type",
+        "authorized_scopes"
+      ],
+      "properties": {
+        "actor_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+        },
+        "actor_type": {
+          "enum": [
+            "customer",
+            "operator",
+            "system"
+          ]
+        },
+        "authorized_scopes": {
+          "type": "array",
+          "maxItems": 32,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "conversation:read",
+              "conversation:write",
+              "delivery:write",
+              "ownership:write",
+              "request:resume"
+            ]
+          }
+        }
+      }
+    },
+    "presentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "question_id",
+        "response_id",
+        "segment_id",
+        "playback_id",
+        "presentation_event_id"
+      ],
+      "properties": {
+        "question_id": {
+          "$ref": "#/$defs/id"
+        },
+        "response_id": {
+          "$ref": "#/$defs/id"
+        },
+        "segment_id": {
+          "$ref": "#/$defs/id"
+        },
+        "playback_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "presentation_event_id": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "asr": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider"
+      ],
+      "properties": {
+        "provider": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "confidence": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "alternatives": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "text",
+              "confidence"
+            ],
+            "properties": {
+              "text": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 8000
+              },
+              "confidence": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0,
+                "maximum": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "channel",
+        "adapter_id",
+        "source_segment_ids"
+      ],
+      "properties": {
+        "channel": {
+          "enum": [
+            "voice",
+            "web",
+            "cli"
+          ]
+        },
+        "adapter_id": {
+          "$ref": "#/$defs/id"
+        },
+        "source_segment_ids": {
+          "type": "array",
+          "maxItems": 32,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "asr": {
+          "$ref": "#/$defs/asr"
+        }
+      }
+    },
+    "trusted": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "owner_generation",
+        "turn_epoch",
+        "state_version",
+        "booking_revision",
+        "deadline_at",
+        "timezone",
+        "input_hash",
+        "actor",
+        "presented_question",
+        "input_timing"
+      ],
+      "properties": {
+        "owner_generation": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "turn_epoch": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "state_version": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "booking_revision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "deadline_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "timezone": {
+          "const": "Asia/Ho_Chi_Minh"
+        },
+        "input_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "actor": {
+          "$ref": "#/$defs/actor"
+        },
+        "presented_question": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/presentation"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "input_timing": {
+          "$ref": "#/$defs/input_timing"
+        }
+      }
+    },
+    "input_timing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "started_at",
+        "ended_at",
+        "overlap",
+        "basis"
+      ],
+      "properties": {
+        "started_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "ended_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "overlap": {
+          "enum": [
+            "no_overlap",
+            "overlapping",
+            "unknown"
+          ]
+        },
+        "basis": {
+          "enum": [
+            "voice_adapter",
+            "text_adapter",
+            "unknown"
+          ]
+        }
+      }
+    }
+  },
+  "description": "Server internal envelope; validate authenticated origin, immutable admitted binding and hash outside schema. Never pass untrusted client JSON directly."
+}

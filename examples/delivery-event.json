@@ -1,0 +1,28 @@
+{
+  "schema_version": "3.0",
+  "kind": "delivery",
+  "session_id": "session-demo-01",
+  "request_id": "request-demo-01",
+  "input_id": "delivery-demo-completed-01",
+  "occurred_at": "2026-10-19T10:00:06+07:00",
+  "trusted": {
+    "owner_generation": 3,
+    "actor": {
+      "actor_id": "voice-runtime-synthetic",
+      "actor_type": "system",
+      "authorized_scopes": [
+        "delivery:write"
+      ]
+    },
+    "adapter_id": "voice-demo-01"
+  },
+  "payload": {
+    "event_type": "playback_completed",
+    "response_id": "response-demo-01",
+    "segment_id": "segment-demo-02",
+    "playback_id": "playback-demo-01",
+    "mode": "voice",
+    "reporter": "server_adapter",
+    "reason": null
+  }
+}

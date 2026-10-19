@@ -1,0 +1,43 @@
+{
+  "schema_version": "3.0",
+  "kind": "user_turn",
+  "session_id": "session-demo-01",
+  "request_id": "request-demo-01",
+  "draft_id": "draft-demo-01",
+  "turn_id": "018b7a20-1111-4111-8111-000000000001",
+  "input_id": "input-demo-01",
+  "received_at": "2026-10-19T10:00:00+07:00",
+  "source": {
+    "channel": "voice",
+    "adapter_id": "voice-demo-01",
+    "source_segment_ids": [
+      "asr-final-demo-01",
+      "asr-final-demo-02"
+    ]
+  },
+  "text": "Đón tôi số 18 ngách 16, ngõ 51 đường Minh Họa, phường Khuê Minh.",
+  "trusted": {
+    "owner_generation": 3,
+    "turn_epoch": 7,
+    "state_version": 12,
+    "booking_revision": 4,
+    "deadline_at": "2026-10-19T10:00:08+07:00",
+    "timezone": "Asia/Ho_Chi_Minh",
+    "input_hash": "461a39c61f32abcade7b540518fb7680be6996f15b40c738d35951fd43cb5ba5",
+    "actor": {
+      "actor_id": "customer-synthetic-01",
+      "actor_type": "customer",
+      "authorized_scopes": [
+        "conversation:read",
+        "conversation:write"
+      ]
+    },
+    "presented_question": null,
+    "input_timing": {
+      "started_at": "2026-10-19T09:59:56+07:00",
+      "ended_at": "2026-10-19T09:59:59+07:00",
+      "overlap": "no_overlap",
+      "basis": "voice_adapter"
+    }
+  }
+}

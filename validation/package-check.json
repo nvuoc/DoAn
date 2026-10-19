@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "checked_at": "2026-10-19T09:22:14.012711+07:00",
+  "scope": "artifact integrity, schema and illustrative fixtures only; not core runtime acceptance",
+  "statistics": {
+    "assertions": 3845,
+    "files": 38,
+    "jsonl_files": 2,
+    "jsonl_rows": 90,
+    "normative_markdown_files": 16,
+    "relative_links": 170,
+    "json_files": 12,
+    "source_checksums": 2,
+    "mapped_source_headings": 186,
+    "original_seeds": 64,
+    "scenario_assertions": 93,
+    "designed_scenarios": 26,
+    "schema_validation_available": 1,
+    "schemas": 4,
+    "schema_validated_examples": 29,
+    "negative_schema_cases": 11,
+    "sql_tables": 17,
+    "package_checksums": 35
+  },
+  "errors": [],
+  "not_run": [
+    "new core runtime tests (core not implemented)",
+    "provider live",
+    "audio integration",
+    "production migration/deploy",
+    "external source URL verification"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "package": "vanuoc",
+  "version": "3.0",
+  "created_at": "2026-10-19T09:05:28.480076+07:00",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "repo_head": "60760c65011b077acc75ce249f85edf6d28ab243",
+  "repo_worktree": "dirty; source plans and evaluation additions untracked at snapshot",
+  "sources": [
+    {
+      "original_path": "PLAN.md",
+      "archived_path": "sources/PLAN.md",
+      "sha256": "d329914d15f70519664eef6bb4f230325a01f893cd302d7e75837e91b4badb15",
+      "bytes": 142502,
+      "role": "historical_source_not_normative"
+    },
+    {
+      "original_path": "PLAN_BONUS.md",
+      "archived_path": "sources/PLAN_BONUS.md",
+      "sha256": "cb8de963a8d0917f23584b6a5a2c30bb286bb51ba1bc29a9fde00c4d23ab3038",
+      "bytes": 67767,
+      "role": "historical_source_not_normative"
+    }
+  ],
+  "status": "design_preparation_not_implementation"
+}

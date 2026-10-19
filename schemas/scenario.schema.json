@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:vanuoc:scenario:3.0",
+  "title": "Đặc tả scenario tổng hợp độc lập engine — vanuoc 3.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "scenario_id", "title", "origin", "created_at", "layer", "profile", "tags", "initial", "fixtures", "timeline", "oracle", "review"],
+  "properties": {
+    "schema_version": {"const": "3.0"},
+    "scenario_id": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]{2,95}$"},
+    "title": {"type": "string", "minLength": 8},
+    "origin": {"const": "synthetic_design"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "layer": {"enum": ["L2", "L3", "L4"]},
+    "profile": {"enum": ["fixture", "sandbox", "connected"]},
+    "tags": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "seed_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^ORIGINAL_[0-9]{4}$"}},
+    "mutation_lineage": {"type": "array", "items": {"$ref": "#/$defs/mutation"}},
+    "initial": {"type": "object", "description": "Target-state setup trong adapter test; không là checkpoint production."},
+    "fixtures": {
+      "type": "object",
+      "required": ["bundle_id", "synthetic", "clock", "policy", "nlu_proposals"],
+      "properties": {
+        "bundle_id": {"type": "string", "minLength": 1},
+        "synthetic": {"const": true},
+        "clock": {"type": "string", "format": "date-time"},
+        "policy": {"type": "object"},
+        "nlu_proposals": {"type": "object", "additionalProperties": {"type": "object"}},
+        "tool_results": {"type": "object"},
+        "knowledge": {"type": "array", "items": {"type": "object"}},
+        "catalog": {"type": "array", "items": {"type": "object"}}
+      },
+      "additionalProperties": false
+    },
+    "timeline": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/event"}},
+    "oracle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rationale", "assertions", "universal_invariants"],
+      "properties": {
+        "rationale": {"type": "string", "minLength": 12},
+        "assertions": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/assertion"}},
+        "universal_invariants": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["NO_UNAUTHORIZED_SIDE_EFFECT", "NO_STALE_WRITE", "SUCCESS_REQUIRES_COMMIT", "NO_CROSS_SESSION_LEAK", "AT_MOST_ONE_QUESTION", "NO_MOCK_AS_REAL_CLAIM"]}}
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "gold", "execution_status", "note"],
+      "properties": {
+        "status": {"const": "design_review_only"},
+        "gold": {"const": false},
+        "execution_status": {"const": "not_run_on_new_core"},
+        "note": {"type": "string", "minLength": 12}
+      }
+    }
+  },
+  "$defs": {
+    "mutation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mutator", "semantic_effect", "parameters"],
+      "properties": {
+        "mutator": {"enum": ["M1_DIALECT_COLLOQUIAL", "M2_PHONETIC_CONFUSION", "M3_WORD_DROP_TRUNCATION", "M4_BACKGROUND_SIDETALK", "M5_SPLIT_TURN_VAD", "INSERT_QUESTION", "CONTEXT_SWAP", "INJECT_TOOL_FAILURE", "CORRECT_PREVIOUS_VALUE"]},
+        "semantic_effect": {"enum": ["preserving", "changing", "information_lost", "context_dependent"]},
+        "parameters": {"type": "object"}
+      }
+    },
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["event_id", "kind", "payload"],
+      "properties": {
+        "event_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]{0,63}$"},
+        "kind": {"enum": ["user_turn", "delivery", "interrupt", "timeout", "session_end", "ownership_changed", "barrier", "fault", "restart"]},
+        "information": {"enum": ["clear", "ambiguous", "irrecoverable"]},
+        "payload": {"type": "object"},
+        "note": {"type": "string"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"kind": {"const": "user_turn"}}},
+          "then": {
+            "required": ["information"],
+            "properties": {"payload": {"required": ["text", "turn_id", "input_id", "source"], "properties": {"text": {"type": "string", "minLength": 1}, "turn_id": {"type": "string", "minLength": 1}, "input_id": {"type": "string", "minLength": 1}, "source": {"enum": ["voice", "web", "cli"]}}}}
+          }
+        },
+        {
+          "if": {"properties": {"kind": {"const": "delivery"}}},
+          "then": {"properties": {"payload": {"required": ["response_id", "playback_id", "state"], "properties": {"state": {"enum": ["sent", "completed", "interrupted", "failed", "availability_ack", "text_presented"]}}}}}
+        },
+        {
+          "if": {"properties": {"kind": {"const": "barrier"}}},
+          "then": {"properties": {"payload": {"required": ["name", "action"], "properties": {"action": {"enum": ["arm", "await", "release"]}}}}}
+        }
+      ]
+    },
+    "assertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["at", "path", "op", "reason"],
+      "properties": {
+        "at": {"type": "string", "pattern": "^(final|[a-z][a-z0-9_]{0,63})$"},
+        "path": {"type": "string", "pattern": "^/(result|booking|dialogue|operations|response|delivery|audit|tools)(/([^~]|~[01])*)?$"},
+        "op": {"enum": ["eq", "ne", "in", "contains", "not_contains", "unchanged", "exists", "truthy", "falsy", "gte", "lte"]},
+        "value": {},
+        "baseline_event": {"type": "string", "pattern": "^(initial|[a-z][a-z0-9_]{0,63})$"},
+        "reason": {"type": "string", "minLength": 8}
+      },
+      "allOf": [
+        {"if": {"properties": {"op": {"enum": ["eq", "ne", "in", "contains", "not_contains", "gte", "lte"]}}}, "then": {"required": ["value"]}},
+        {"if": {"properties": {"op": {"const": "in"}}}, "then": {"properties": {"value": {"type": "array", "minItems": 1}}}},
+        {"if": {"properties": {"op": {"enum": ["gte", "lte"]}}}, "then": {"properties": {"value": {"type": "number"}}}}
+      ]
+    }
+  }
+}

@@ -1,0 +1,980 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.vanuoc.invalid/3.0/turn-result.schema.json",
+  "title": "Vanuoc v3.0 - durable turn result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "session_id",
+    "request_id",
+    "draft_id",
+    "turn_id",
+    "input_id",
+    "status",
+    "new_commit",
+    "state_version",
+    "observed_state_version",
+    "booking_revision",
+    "booking_status",
+    "profile",
+    "business_outcome",
+    "response",
+    "delivery",
+    "error",
+    "trace_id",
+    "timings"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "3.0"
+    },
+    "session_id": {
+      "$ref": "#/$defs/id"
+    },
+    "request_id": {
+      "$ref": "#/$defs/id"
+    },
+    "draft_id": {
+      "$ref": "#/$defs/id"
+    },
+    "turn_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "input_id": {
+      "$ref": "#/$defs/id"
+    },
+    "status": {
+      "enum": [
+        "committed",
+        "replayed",
+        "cancelled",
+        "stale",
+        "deadline_exceeded",
+        "retryable_error",
+        "rejected"
+      ]
+    },
+    "new_commit": {
+      "type": "boolean"
+    },
+    "state_version": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "observed_state_version": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "booking_revision": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "booking_status": {
+      "enum": [
+        "collecting",
+        "awaiting_confirmation",
+        "submitting",
+        "request_recorded",
+        "cancel_pending",
+        "cancelled",
+        "operator_required",
+        "submit_failed",
+        null
+      ]
+    },
+    "profile": {
+      "enum": [
+        "fixture",
+        "sandbox",
+        "connected"
+      ]
+    },
+    "business_outcome": {
+      "$ref": "#/$defs/business_outcome"
+    },
+    "response": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/response"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "delivery": {
+      "$ref": "#/$defs/delivery"
+    },
+    "error": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/error"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "trace_id": {
+      "$ref": "#/$defs/id"
+    },
+    "timings": {
+      "$ref": "#/$defs/timings"
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scope",
+        "slot",
+        "entity_id",
+        "location_version",
+        "booking_revision",
+        "values_digest",
+        "policy_version"
+      ],
+      "properties": {
+        "scope": {
+          "enum": [
+            "location",
+            "booking",
+            "draft",
+            "reference",
+            "support"
+          ]
+        },
+        "slot": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "origin",
+            "destination",
+            "vehicle_type",
+            "passengers",
+            "pickup_time",
+            "stops",
+            "driver_note",
+            null
+          ]
+        },
+        "entity_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "location_version": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "booking_revision": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "values_digest": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "policy_version": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "question": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "question_id",
+        "kind",
+        "target",
+        "segment_id",
+        "candidate_ids"
+      ],
+      "properties": {
+        "question_id": {
+          "$ref": "#/$defs/id"
+        },
+        "kind": {
+          "enum": [
+            "confirm_location",
+            "confirm_trip",
+            "choose_candidate",
+            "clarify_slot",
+            "confirm_cancel",
+            "resume_choice",
+            "support_choice",
+            "clarify_reference"
+          ]
+        },
+        "target": {
+          "$ref": "#/$defs/target"
+        },
+        "segment_id": {
+          "$ref": "#/$defs/id"
+        },
+        "candidate_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "maxItems": 8,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "confirm_location"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "properties": {
+                  "scope": {
+                    "const": "location"
+                  },
+                  "slot": {
+                    "enum": [
+                      "origin",
+                      "destination"
+                    ]
+                  },
+                  "entity_id": {
+                    "$ref": "#/$defs/id"
+                  },
+                  "location_version": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "confirm_trip"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "properties": {
+                  "scope": {
+                    "const": "booking"
+                  },
+                  "booking_revision": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "values_digest": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "choose_candidate"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "candidate_ids": {
+                "minItems": 2
+              },
+              "target": {
+                "properties": {
+                  "scope": {
+                    "const": "location"
+                  },
+                  "slot": {
+                    "enum": [
+                      "origin",
+                      "destination"
+                    ]
+                  },
+                  "location_version": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "segment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "segment_id",
+        "index",
+        "kind",
+        "text",
+        "source_refs",
+        "claim_scope"
+      ],
+      "properties": {
+        "segment_id": {
+          "$ref": "#/$defs/id"
+        },
+        "index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "kind": {
+          "enum": [
+            "answer",
+            "acknowledgment",
+            "status",
+            "question"
+          ]
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8000
+        },
+        "source_refs": {
+          "type": "array",
+          "maxItems": 32,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "claim_scope": {
+          "enum": [
+            "none",
+            "conversation",
+            "estimate",
+            "intake",
+            "dispatch"
+          ]
+        }
+      }
+    },
+    "response": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "response_id",
+        "created_at",
+        "locale",
+        "speech_rate",
+        "segments",
+        "final_text",
+        "question"
+      ],
+      "properties": {
+        "response_id": {
+          "$ref": "#/$defs/id"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "locale": {
+          "const": "vi-VN"
+        },
+        "speech_rate": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 1.5
+        },
+        "segments": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "items": {
+            "$ref": "#/$defs/segment"
+          },
+          "contains": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "question"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "minContains": 0,
+          "maxContains": 1
+        },
+        "final_text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 16000
+        },
+        "question": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/question"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "question": {
+                "type": "null"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "segments": {
+                "not": {
+                  "contains": {
+                    "type": "object",
+                    "properties": {
+                      "kind": {
+                        "const": "question"
+                      }
+                    },
+                    "required": [
+                      "kind"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "segments": {
+                "contains": {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "const": "question"
+                    }
+                  },
+                  "required": [
+                    "kind"
+                  ]
+                },
+                "minContains": 1,
+                "maxContains": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "business_outcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "record_id",
+        "operation_id",
+        "dispatch_status",
+        "backend_reference"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "none",
+            "draft_updated",
+            "request_recorded",
+            "cancel_requested",
+            "cancelled",
+            "operator_required",
+            "submit_failed",
+            "unknown_outcome",
+            "dispatch_confirmed"
+          ]
+        },
+        "record_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "operation_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "dispatch_status": {
+          "enum": [
+            "not_requested",
+            "pending",
+            "confirmed",
+            "unknown",
+            "failed"
+          ]
+        },
+        "backend_reference": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "request_recorded"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "record_id": {
+                "$ref": "#/$defs/id"
+              },
+              "operation_id": {
+                "$ref": "#/$defs/id"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "dispatch_confirmed"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "dispatch_status": {
+                "const": "confirmed"
+              },
+              "backend_reference": {
+                "$ref": "#/$defs/id"
+              },
+              "operation_id": {
+                "$ref": "#/$defs/id"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "dispatch_status": {
+                "const": "confirmed"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "kind": {
+                "const": "dispatch_confirmed"
+              },
+              "backend_reference": {
+                "$ref": "#/$defs/id"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "error": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "retryable",
+        "retry_after_ms",
+        "safe_message_key"
+      ],
+      "properties": {
+        "code": {
+          "enum": [
+            "INVALID_INPUT",
+            "UNSUPPORTED_SCHEMA",
+            "INPUT_CONFLICT",
+            "NOT_AUTHORIZED",
+            "SESSION_ENDED",
+            "OWNER_SUPERSEDED",
+            "STATE_CONFLICT",
+            "TURN_SUPERSEDED",
+            "TURN_CANCELLED",
+            "DEADLINE_EXCEEDED",
+            "TURN_IN_PROGRESS",
+            "STORE_BUSY",
+            "STORE_UNAVAILABLE",
+            "PROVIDER_TIMEOUT",
+            "PROVIDER_RATE_LIMIT",
+            "PROVIDER_UNAVAILABLE",
+            "INVALID_MODEL_OUTPUT",
+            "UNKNOWN_OPERATION_OUTCOME"
+          ]
+        },
+        "retryable": {
+          "type": "boolean"
+        },
+        "retry_after_ms": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 60000
+        },
+        "safe_message_key": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        }
+      }
+    },
+    "delivery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "allowed",
+        "reason"
+      ],
+      "properties": {
+        "allowed": {
+          "type": "boolean"
+        },
+        "reason": {
+          "enum": [
+            "committed_current",
+            "replayed_current",
+            "superseded",
+            "no_response",
+            "not_committed"
+          ]
+        }
+      }
+    },
+    "timings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "prepare_ms",
+        "commit_ms",
+        "total_ms"
+      ],
+      "properties": {
+        "prepare_ms": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "commit_ms": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "total_ms": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "committed"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "new_commit": {
+            "const": true
+          },
+          "state_version": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "observed_state_version": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "booking_revision": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "new_commit": {
+            "const": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "committed",
+              "replayed"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "state_version": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "observed_state_version": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "booking_revision": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "response": {
+            "type": "null"
+          },
+          "delivery": {
+            "properties": {
+              "allowed": {
+                "const": false
+              },
+              "reason": {
+                "const": "not_committed"
+              }
+            }
+          },
+          "business_outcome": {
+            "properties": {
+              "kind": {
+                "const": "none"
+              },
+              "record_id": {
+                "type": "null"
+              },
+              "operation_id": {
+                "type": "null"
+              },
+              "dispatch_status": {
+                "const": "not_requested"
+              },
+              "backend_reference": {
+                "type": "null"
+              }
+            }
+          },
+          "error": {
+            "$ref": "#/$defs/error"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "delivery": {
+            "properties": {
+              "allowed": {
+                "const": true
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "enum": [
+              "committed",
+              "replayed"
+            ]
+          },
+          "response": {
+            "$ref": "#/$defs/response"
+          },
+          "delivery": {
+            "properties": {
+              "reason": {
+                "enum": [
+                  "committed_current",
+                  "replayed_current"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "delivery": {
+            "properties": {
+              "reason": {
+                "const": "committed_current"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "const": "committed"
+          },
+          "delivery": {
+            "properties": {
+              "allowed": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "delivery": {
+            "properties": {
+              "reason": {
+                "const": "replayed_current"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "const": "replayed"
+          },
+          "delivery": {
+            "properties": {
+              "allowed": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "delivery": {
+            "properties": {
+              "reason": {
+                "enum": [
+                  "superseded",
+                  "no_response",
+                  "not_committed"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "delivery": {
+            "properties": {
+              "allowed": {
+                "const": false
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "description": "Delivery eligibility and equality/cross-reference checks require semantic validation; no claim this schema implements runtime."
+}

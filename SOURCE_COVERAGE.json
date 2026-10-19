@@ -1,0 +1,1495 @@
+{
+  "version": "3.0",
+  "created_at": "2026-10-19T09:22:13.180161+07:00",
+  "meaning": "Structural heading coverage; semantic dispositions are reviewed in docs/12_SOURCE_TRACEABILITY.md. No claim of automated semantic completeness.",
+  "headings": [
+    {
+      "source": "PLAN.md",
+      "line": 1,
+      "level": 1,
+      "heading": "ĐẶC TẢ TRIỂN KHAI ĐỘC LẬP — TỔNG ĐÀI TAXI AI TEXT-TO-TEXT, CLI VÀ TEST FACTORY",
+      "destination": "PLAN_HOP_NHAT.md",
+      "disposition": "intro_or_navigation"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 14,
+      "level": 2,
+      "heading": "Mục lục",
+      "destination": "PLAN_HOP_NHAT.md",
+      "disposition": "intro_or_navigation"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 43,
+      "level": 2,
+      "heading": "1. Mục đích, định nghĩa hoàn thành và phạm vi",
+      "destination": "PLAN_HOP_NHAT.md",
+      "disposition": "adapt_scope"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 45,
+      "level": 3,
+      "heading": "1.1 Bài toán sản phẩm",
+      "destination": "PLAN_HOP_NHAT.md",
+      "disposition": "adapt_scope"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 55,
+      "level": 3,
+      "heading": "1.2 Definition of Done (DoD) cho V1 CLI",
+      "destination": "PLAN_HOP_NHAT.md",
+      "disposition": "adapt_scope"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 68,
+      "level": 3,
+      "heading": "1.3 Ngoài phạm vi của V1",
+      "destination": "PLAN_HOP_NHAT.md",
+      "disposition": "adapt_scope"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 72,
+      "level": 3,
+      "heading": "1.4 Thứ tự ưu tiên chất lượng",
+      "destination": "PLAN_HOP_NHAT.md",
+      "disposition": "adapt_scope"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 82,
+      "level": 3,
+      "heading": "1.5 Phân loại yêu cầu: MUST / SHOULD / OPTIONAL",
+      "destination": "PLAN_HOP_NHAT.md",
+      "disposition": "adapt_scope"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 90,
+      "level": 2,
+      "heading": "2. Quyết định kiến trúc và những điều không được làm",
+      "destination": "PLAN_HOP_NHAT.md",
+      "disposition": "adapt_architecture"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 112,
+      "level": 2,
+      "heading": "3. Kiến trúc các module và luồng một lượt",
+      "destination": "docs/01_CORE_CONTRACT.md",
+      "disposition": "extend_runtime_contract"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 114,
+      "level": 3,
+      "heading": "3.1 Sơ đồ xử lý",
+      "destination": "docs/01_CORE_CONTRACT.md",
+      "disposition": "extend_runtime_contract"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 140,
+      "level": 3,
+      "heading": "3.2 Boundary các module",
+      "destination": "docs/01_CORE_CONTRACT.md",
+      "disposition": "extend_runtime_contract"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 152,
+      "level": 3,
+      "heading": "3.3 Quy trình xử lý lỗi trên một turn",
+      "destination": "docs/01_CORE_CONTRACT.md",
+      "disposition": "extend_runtime_contract"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 164,
+      "level": 2,
+      "heading": "4. Các chế độ chạy và kết nối dịch vụ",
+      "destination": "PLAN_HOP_NHAT.md",
+      "disposition": "preserve_profiles_adapt_provider_choice"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 180,
+      "level": 2,
+      "heading": "5. Đặc tả giao diện CLI để chat thủ công",
+      "destination": "docs/10_IMPLEMENTATION_BACKLOG.md",
+      "disposition": "adapt_cli_as_core_adapter"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 182,
+      "level": 3,
+      "heading": "5.1 UX tối thiểu (MUST)",
+      "destination": "docs/10_IMPLEMENTATION_BACKLOG.md",
+      "disposition": "adapt_cli_as_core_adapter"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 211,
+      "level": 3,
+      "heading": "5.2 Lệnh CLI và cú pháp",
+      "destination": "docs/10_IMPLEMENTATION_BACKLOG.md",
+      "disposition": "adapt_cli_as_core_adapter"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 229,
+      "level": 3,
+      "heading": "5.3 Render text và debug",
+      "destination": "docs/10_IMPLEMENTATION_BACKLOG.md",
+      "disposition": "adapt_cli_as_core_adapter"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 237,
+      "level": 3,
+      "heading": "5.4 Khởi động lại/resume session",
+      "destination": "docs/10_IMPLEMENTATION_BACKLOG.md",
+      "disposition": "adapt_cli_as_core_adapter"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 242,
+      "level": 2,
+      "heading": "6. Đặc tả dữ liệu chuẩn và vòng đời state",
+      "destination": "docs/02_CORE_STATE_MACHINE.md",
+      "disposition": "extend_identity_versions_state"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 244,
+      "level": 3,
+      "heading": "6.1 Nguyên tắc mô hình dữ liệu",
+      "destination": "docs/02_CORE_STATE_MACHINE.md",
+      "disposition": "extend_identity_versions_state"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 253,
+      "level": 3,
+      "heading": "6.2 Những entity/domain schema bắt buộc",
+      "destination": "docs/02_CORE_STATE_MACHINE.md",
+      "disposition": "extend_identity_versions_state"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 270,
+      "level": 3,
+      "heading": "6.3 State chuẩn (schema minh họa, giá trị không phải dữ liệu thật)",
+      "destination": "docs/02_CORE_STATE_MACHINE.md",
+      "disposition": "extend_identity_versions_state"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 326,
+      "level": 3,
+      "heading": "6.4 State booking và sự kiện chuyển trạng thái",
+      "destination": "docs/02_CORE_STATE_MACHINE.md",
+      "disposition": "extend_identity_versions_state"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 345,
+      "level": 3,
+      "heading": "6.5 Required slots: phải cấu hình theo dịch vụ thực",
+      "destination": "docs/02_CORE_STATE_MACHINE.md",
+      "disposition": "extend_identity_versions_state"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 360,
+      "level": 3,
+      "heading": "6.6 State của lời vừa nói / vừa nghe",
+      "destination": "docs/02_CORE_STATE_MACHINE.md",
+      "disposition": "extend_identity_versions_state"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 372,
+      "level": 2,
+      "heading": "7. Ontology NLU, Dialogue Acts, slots, tham chiếu",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "preserve_semantics_extend_uncertainty"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 374,
+      "level": 3,
+      "heading": "7.1 Bộ 13 primary intents (để thống kê/routing sơ bộ)",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "preserve_semantics_extend_uncertainty"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 396,
+      "level": 3,
+      "heading": "7.2 Dialogue Acts (đơn vị vận hành quan trọng hơn intent)",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "preserve_semantics_extend_uncertainty"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 419,
+      "level": 3,
+      "heading": "7.3 Các slot và dấu hiệu bóc tách",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "preserve_semantics_extend_uncertainty"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 433,
+      "level": 3,
+      "heading": "7.4 Quy tắc phân biệt **hỏi** với **đặt/đổi chuyến** (MUST)",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "preserve_semantics_extend_uncertainty"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 451,
+      "level": 3,
+      "heading": "7.5 Phủ định, sửa ý, quay xe trong cùng một câu",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "preserve_semantics_extend_uncertainty"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 461,
+      "level": 3,
+      "heading": "7.6 “Ừ”, “vâng”, “đúng”, “không”, “thế á”, “chịu”",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "preserve_semantics_extend_uncertainty"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 468,
+      "level": 3,
+      "heading": "7.7 Tham chiếu “đây/đó/đấy/nó/chỗ kia”",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "preserve_semantics_extend_uncertainty"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 472,
+      "level": 3,
+      "heading": "7.8 NLUResult JSON chuẩn — ví dụ đa ý định",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "preserve_semantics_extend_uncertainty"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 497,
+      "level": 2,
+      "heading": "8. LangGraph, luật định tuyến, giao dịch an toàn",
+      "destination": "docs/03_CORE_TRANSACTION_PROTOCOL.md",
+      "disposition": "extend_delivery_fencing_causality"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 499,
+      "level": 3,
+      "heading": "8.1 Chọn graph workflow có kiểm soát, không phải agent tự do",
+      "destination": "docs/03_CORE_TRANSACTION_PROTOCOL.md",
+      "disposition": "extend_delivery_fencing_causality"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 505,
+      "level": 3,
+      "heading": "8.2 Planner ưu tiên thứ tự xử lý",
+      "destination": "docs/03_CORE_TRANSACTION_PROTOCOL.md",
+      "disposition": "extend_delivery_fencing_causality"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 516,
+      "level": 3,
+      "heading": "8.3 Confirmation target phải có ID, loại, phiên bản",
+      "destination": "docs/03_CORE_TRANSACTION_PROTOCOL.md",
+      "disposition": "extend_delivery_fencing_causality"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 534,
+      "level": 3,
+      "heading": "8.4 Idempotency và side effects",
+      "destination": "docs/03_CORE_TRANSACTION_PROTOCOL.md",
+      "disposition": "extend_delivery_fencing_causality"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 538,
+      "level": 3,
+      "heading": "8.5 Handoff cho người thật",
+      "destination": "docs/03_CORE_TRANSACTION_PROTOCOL.md",
+      "disposition": "extend_delivery_fencing_causality"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 542,
+      "level": 3,
+      "heading": "8.6 Hard invariants (kiểm thử như luật bất biến)",
+      "destination": "docs/03_CORE_TRANSACTION_PROTOCOL.md",
+      "disposition": "extend_delivery_fencing_causality"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 562,
+      "level": 2,
+      "heading": "9. Bài toán địa chỉ Việt Nam và chọn ứng viên",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "preserve_evidence_correct_unsafe_rules"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 564,
+      "level": 3,
+      "heading": "9.1 Mục tiêu địa chỉ trong tổng đài taxi",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "preserve_evidence_correct_unsafe_rules"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 574,
+      "level": 3,
+      "heading": "9.2 Pipeline LocationResolver",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "preserve_evidence_correct_unsafe_rules"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 589,
+      "level": 3,
+      "heading": "9.3 Alias và sửa lỗi nói/ASR giả lập",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "preserve_evidence_correct_unsafe_rules"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 604,
+      "level": 3,
+      "heading": "9.4 Địa chỉ nhiều cấp, map chỉ tìm được cấp lớn",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "preserve_evidence_correct_unsafe_rules"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 614,
+      "level": 3,
+      "heading": "9.5 Địa chỉ nông thôn và mốc tương đối",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "preserve_evidence_correct_unsafe_rules"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 618,
+      "level": 3,
+      "heading": "9.6 Chính sách chọn **một** địa điểm để xác nhận",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "preserve_evidence_correct_unsafe_rules"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 628,
+      "level": 3,
+      "heading": "9.7 Parent–Child POI và ưu tiên nhóm POI lớn",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "preserve_evidence_correct_unsafe_rules"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 634,
+      "level": 3,
+      "heading": "9.8 Tích hợp Vietmap v4 — adapter phải tuân thủ API thật",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "preserve_evidence_correct_unsafe_rules"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 645,
+      "level": 3,
+      "heading": "9.9 Data dictionary của `GeoCandidate`",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "preserve_evidence_correct_unsafe_rules"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 671,
+      "level": 2,
+      "heading": "10. Ước lượng đường, thời gian và giá đồng hồ",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "preserve_source_tariff_gate"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 673,
+      "level": 3,
+      "heading": "10.1 Mục tiêu và chuẩn đầu ra",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "preserve_source_tariff_gate"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 679,
+      "level": 3,
+      "heading": "10.2 Điều kiện được tính",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "preserve_source_tariff_gate"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 686,
+      "level": 3,
+      "heading": "10.3 Tính cước đúng loại biểu giá",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "preserve_source_tariff_gate"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 701,
+      "level": 3,
+      "heading": "10.4 Cache và invalidation",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "preserve_source_tariff_gate"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 705,
+      "level": 3,
+      "heading": "10.5 Ví dụ phản hồi khi thực sự có kết quả",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "preserve_source_tariff_gate"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 712,
+      "level": 2,
+      "heading": "11. Policy Engine, FAQ và câu trả lời có căn cứ",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "preserve_approved_effective_knowledge"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 714,
+      "level": 3,
+      "heading": "11.1 Chia nguồn tri thức thành bốn lớp",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "preserve_approved_effective_knowledge"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 723,
+      "level": 3,
+      "heading": "11.2 KnowledgeRecord bắt buộc",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "preserve_approved_effective_knowledge"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 750,
+      "level": 3,
+      "heading": "11.3 Quy trình trả lời FAQ (2-step retrieval)",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "preserve_approved_effective_knowledge"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 764,
+      "level": 3,
+      "heading": "11.4 Khi không tìm được câu trả lời",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "preserve_approved_effective_knowledge"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 772,
+      "level": 3,
+      "heading": "11.5 Chính sách hiển thị và nguồn dữ liệu",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "preserve_approved_effective_knowledge"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 776,
+      "level": 3,
+      "heading": "11.6 Mẫu policy settings phải có trước khi bật booking thật",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "preserve_approved_effective_knowledge"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 802,
+      "level": 2,
+      "heading": "12. Template, câu hỏi làm rõ, nhắc lại hội thoại",
+      "destination": "docs/07_RESPONSE_AND_DELIVERY.md",
+      "disposition": "extend_presented_history_delivery"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 804,
+      "level": 3,
+      "heading": "12.1 ResponseRenderer gắn với action, không gắn thẳng Intent",
+      "destination": "docs/07_RESPONSE_AND_DELIVERY.md",
+      "disposition": "extend_presented_history_delivery"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 818,
+      "level": 3,
+      "heading": "12.2 Ví dụ thư viện template (dữ liệu mẫu)",
+      "destination": "docs/07_RESPONSE_AND_DELIVERY.md",
+      "disposition": "extend_presented_history_delivery"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 844,
+      "level": 3,
+      "heading": "12.3 “Nói nhanh lên”, “nói ít thôi” trong bản text",
+      "destination": "docs/07_RESPONSE_AND_DELIVERY.md",
+      "disposition": "extend_presented_history_delivery"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 851,
+      "level": 3,
+      "heading": "12.4 Quy tắc recall chính xác (MUST)",
+      "destination": "docs/07_RESPONSE_AND_DELIVERY.md",
+      "disposition": "extend_presented_history_delivery"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 865,
+      "level": 3,
+      "heading": "12.5 Khi khách phản đối hoặc không biết",
+      "destination": "docs/07_RESPONSE_AND_DELIVERY.md",
+      "disposition": "extend_presented_history_delivery"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 875,
+      "level": 2,
+      "heading": "13. Mẫu hội thoại hoàn chỉnh và chuyển trạng thái",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_behavior_as_synthetic_scenarios"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 879,
+      "level": 3,
+      "heading": "13.1 Đặt xe từ đầu đến cuối",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_behavior_as_synthetic_scenarios"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 899,
+      "level": 3,
+      "heading": "13.2 Hỏi địa lý xen vào không làm đổi destination",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_behavior_as_synthetic_scenarios"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 912,
+      "level": 3,
+      "heading": "13.3 Hủy rồi yêu cầu tiếp tục",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_behavior_as_synthetic_scenarios"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 927,
+      "level": 3,
+      "heading": "13.4 Địa chỉ chi tiết hơn Map API",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_behavior_as_synthetic_scenarios"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 937,
+      "level": 3,
+      "heading": "13.5 Nhiều địa điểm cùng tên",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_behavior_as_synthetic_scenarios"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 948,
+      "level": 3,
+      "heading": "13.6 Recall cả lời bot và lời khách",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_behavior_as_synthetic_scenarios"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 964,
+      "level": 3,
+      "heading": "13.7 FAQ + booking cùng một câu",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_behavior_as_synthetic_scenarios"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 973,
+      "level": 3,
+      "heading": "13.8 “Không biết cổng” và khu đô thị/bệnh viện lớn",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_behavior_as_synthetic_scenarios"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 982,
+      "level": 3,
+      "heading": "13.9 Địa danh dân dã và ASR-noise",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_behavior_as_synthetic_scenarios"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 994,
+      "level": 2,
+      "heading": "14. Thiết kế Test Factory và ba tầng kiểm thử",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_L1_L2_L3_extend_L4"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 996,
+      "level": 3,
+      "heading": "14.1 Vì sao 64 câu gốc không phải bộ gold hoàn chỉnh",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_L1_L2_L3_extend_L4"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1006,
+      "level": 3,
+      "heading": "14.2 L1 seed schema",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_L1_L2_L3_extend_L4"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1025,
+      "level": 3,
+      "heading": "14.3 L2 contextual turn schema",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_L1_L2_L3_extend_L4"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1054,
+      "level": 3,
+      "heading": "14.4 L3 conversation scenario schema",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_L1_L2_L3_extend_L4"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1089,
+      "level": 3,
+      "heading": "14.5 Bộ test tối thiểu phải được tổ chức theo ma trận",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_L1_L2_L3_extend_L4"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1104,
+      "level": 3,
+      "heading": "14.6 Bộ gold và các ngưỡng ưu tiên",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_L1_L2_L3_extend_L4"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1112,
+      "level": 2,
+      "heading": "15. Quy tắc sinh dữ liệu, oracle, regression và chấm điểm",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_independent_oracle_extend_mutators"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1114,
+      "level": 3,
+      "heading": "15.1 Nguyên tắc vàng: sinh **ngữ nghĩa trước, câu chữ sau**",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_independent_oracle_extend_mutators"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1129,
+      "level": 3,
+      "heading": "15.2 Loại mutation, precondition, oracle policy",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_independent_oracle_extend_mutators"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1150,
+      "level": 3,
+      "heading": "15.3 Semantics của phép ghép nhiều hành động",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_independent_oracle_extend_mutators"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1164,
+      "level": 3,
+      "heading": "15.4 Validator pipeline cho generated tests",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_independent_oracle_extend_mutators"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1176,
+      "level": 3,
+      "heading": "15.5 Test oracle ba cấp",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_independent_oracle_extend_mutators"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1186,
+      "level": 3,
+      "heading": "15.6 Runner chạy một scenario",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_independent_oracle_extend_mutators"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1203,
+      "level": 3,
+      "heading": "15.7 Metrics yêu cầu",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_independent_oracle_extend_mutators"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1225,
+      "level": 3,
+      "heading": "15.8 CLI commands và file reports",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "preserve_independent_oracle_extend_mutators"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1245,
+      "level": 2,
+      "heading": "16. Cấu trúc repository, cấu hình, lệnh cài/chạy",
+      "destination": "docs/09_MIGRATION_AND_CUTOVER.md",
+      "disposition": "replace_greenfield_layout_with_repo_compatibility"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1247,
+      "level": 3,
+      "heading": "16.1 Repository target",
+      "destination": "docs/09_MIGRATION_AND_CUTOVER.md",
+      "disposition": "replace_greenfield_layout_with_repo_compatibility"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1355,
+      "level": 3,
+      "heading": "16.2 Dependencies mục tiêu (không đóng cứng phiên bản trước khi test)",
+      "destination": "docs/09_MIGRATION_AND_CUTOVER.md",
+      "disposition": "replace_greenfield_layout_with_repo_compatibility"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1363,
+      "level": 3,
+      "heading": "16.3 `.env.example` không chứa secret thực",
+      "destination": "docs/09_MIGRATION_AND_CUTOVER.md",
+      "disposition": "replace_greenfield_layout_with_repo_compatibility"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1390,
+      "level": 3,
+      "heading": "16.4 Khung thao tác cài đặt đề xuất",
+      "destination": "docs/09_MIGRATION_AND_CUTOVER.md",
+      "disposition": "replace_greenfield_layout_with_repo_compatibility"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1414,
+      "level": 3,
+      "heading": "16.5 Model serving — khung tối thiểu",
+      "destination": "docs/09_MIGRATION_AND_CUTOVER.md",
+      "disposition": "replace_greenfield_layout_with_repo_compatibility"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1424,
+      "level": 3,
+      "heading": "16.6 Smoke test cần làm ngay sau cài",
+      "destination": "docs/09_MIGRATION_AND_CUTOVER.md",
+      "disposition": "replace_greenfield_layout_with_repo_compatibility"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1437,
+      "level": 2,
+      "heading": "17. Đặc tả API nội bộ, lưu trữ, logging và bảo mật",
+      "destination": "docs/03_CORE_TRANSACTION_PROTOCOL.md",
+      "disposition": "extend_atomic_protocol_recovery"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1439,
+      "level": 3,
+      "heading": "17.1 Contracts/service interfaces",
+      "destination": "docs/03_CORE_TRANSACTION_PROTOCOL.md",
+      "disposition": "extend_atomic_protocol_recovery"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1457,
+      "level": 3,
+      "heading": "17.2 Transaction boundary cho một turn",
+      "destination": "docs/03_CORE_TRANSACTION_PROTOCOL.md",
+      "disposition": "extend_atomic_protocol_recovery"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1466,
+      "level": 3,
+      "heading": "17.3 Logging & trace fields",
+      "destination": "docs/03_CORE_TRANSACTION_PROTOCOL.md",
+      "disposition": "extend_atomic_protocol_recovery"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1472,
+      "level": 3,
+      "heading": "17.4 Bảo vệ dữ liệu cá nhân",
+      "destination": "docs/03_CORE_TRANSACTION_PROTOCOL.md",
+      "disposition": "extend_atomic_protocol_recovery"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1476,
+      "level": 3,
+      "heading": "17.5 Quota, timeout, circuit breaker",
+      "destination": "docs/03_CORE_TRANSACTION_PROTOCOL.md",
+      "disposition": "extend_atomic_protocol_recovery"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1482,
+      "level": 2,
+      "heading": "18. Khung mã nguồn và thuật toán tham chiếu",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "replace_pseudocode_with_contract_and_state_spec"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1486,
+      "level": 3,
+      "heading": "18.1 Entrypoint và main loop",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "replace_pseudocode_with_contract_and_state_spec"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1509,
+      "level": 3,
+      "heading": "18.2 Reducer và policy",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "replace_pseudocode_with_contract_and_state_spec"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1538,
+      "level": 3,
+      "heading": "18.3 Model prompt — contract, không cho tự ý quyết định API",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "replace_pseudocode_with_contract_and_state_spec"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1559,
+      "level": 3,
+      "heading": "18.4 Reference tests giúp lập trình độc lập",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "replace_pseudocode_with_contract_and_state_spec"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1585,
+      "level": 3,
+      "heading": "18.5 Các màn hình và dữ liệu debug cần có",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "replace_pseudocode_with_contract_and_state_spec"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1594,
+      "level": 2,
+      "heading": "19. Kế hoạch triển khai theo mốc và nghiệm thu",
+      "destination": "docs/10_IMPLEMENTATION_BACKLOG.md",
+      "disposition": "replace_milestones_with_R0_R8_gates"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1610,
+      "level": 3,
+      "heading": "19.1 Acceptance checklist (MUST)",
+      "destination": "docs/10_IMPLEMENTATION_BACKLOG.md",
+      "disposition": "replace_milestones_with_R0_R8_gates"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1631,
+      "level": 3,
+      "heading": "19.2 Tiêu chí dừng triển khai ra ngoài CLI",
+      "destination": "docs/10_IMPLEMENTATION_BACKLOG.md",
+      "disposition": "replace_milestones_with_R0_R8_gates"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1637,
+      "level": 2,
+      "heading": "20. Danh mục lỗi, rủi ro, quyết định còn cần cấu hình",
+      "destination": "decisions/OPEN_DECISIONS.md",
+      "disposition": "preserve_risks_register_open_decisions"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1639,
+      "level": 3,
+      "heading": "20.1 Rủi ro chính và biện pháp",
+      "destination": "decisions/OPEN_DECISIONS.md",
+      "disposition": "preserve_risks_register_open_decisions"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1660,
+      "level": 3,
+      "heading": "20.2 Các dữ liệu phải bổ sung từ hãng để “hoàn thiện production”",
+      "destination": "decisions/OPEN_DECISIONS.md",
+      "disposition": "preserve_risks_register_open_decisions"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1675,
+      "level": 3,
+      "heading": "20.3 Quyết định không được đồng nhất",
+      "destination": "decisions/OPEN_DECISIONS.md",
+      "disposition": "preserve_risks_register_open_decisions"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1688,
+      "level": 2,
+      "heading": "Phụ lục A: 64 phát ngôn gốc và hướng tạo test",
+      "destination": "data/original-64.jsonl",
+      "disposition": "preserve_all_64_verbatim_not_gold"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1763,
+      "level": 2,
+      "heading": "Phụ lục B: mẫu dữ liệu, fixtures, test cases",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "adapt_demo_fixtures_not_live_facts"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1767,
+      "level": 3,
+      "heading": "B.1 Demo policy (chỉ dùng sandbox / fixture)",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "adapt_demo_fixtures_not_live_facts"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1795,
+      "level": 3,
+      "heading": "B.2 Demo place fixtures — cố tình sinh nơi trùng tên",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "adapt_demo_fixtures_not_live_facts"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1828,
+      "level": 3,
+      "heading": "B.3 Demo tariff (không phải giá của một hãng taxi)",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "adapt_demo_fixtures_not_live_facts"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1849,
+      "level": 3,
+      "heading": "B.4 Bộ test có ngữ cảnh tối thiểu để bắt đầu",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "adapt_demo_fixtures_not_live_facts"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1884,
+      "level": 3,
+      "heading": "B.5 Test scenario cho hai mục tiêu độc lập: inquiry vs booking",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "adapt_demo_fixtures_not_live_facts"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1908,
+      "level": 3,
+      "heading": "B.6 Test thủ công trong CLI — script nghiệm thu có thể tái làm",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "adapt_demo_fixtures_not_live_facts"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1941,
+      "level": 3,
+      "heading": "B.7 Giá trị bài toán dữ liệu địa giới cần có",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "adapt_demo_fixtures_not_live_facts"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1949,
+      "level": 2,
+      "heading": "Phụ lục C: tài liệu tham chiếu, cách cập nhật",
+      "destination": "sources/README.md",
+      "disposition": "archive_upstream_recheck_at_integration"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1951,
+      "level": 3,
+      "heading": "C.1 Nguồn kỹ thuật chính thức đã kiểm tra trong lần biên soạn",
+      "destination": "sources/README.md",
+      "disposition": "archive_upstream_recheck_at_integration"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1974,
+      "level": 3,
+      "heading": "C.2 Mốc độ tin cậy và những phần không thể khẳng định trong tài liệu",
+      "destination": "sources/README.md",
+      "disposition": "archive_upstream_recheck_at_integration"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1983,
+      "level": 3,
+      "heading": "C.3 Bảo trì nguồn tri thức và version",
+      "destination": "sources/README.md",
+      "disposition": "archive_upstream_recheck_at_integration"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1989,
+      "level": 2,
+      "heading": "Phụ lục D: checklist bàn giao cho coding agent",
+      "destination": "docs/10_IMPLEMENTATION_BACKLOG.md",
+      "disposition": "adapt_coding_handoff_to_repo"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 1993,
+      "level": 3,
+      "heading": "D.1 Yêu cầu thực hiện",
+      "destination": "docs/10_IMPLEMENTATION_BACKLOG.md",
+      "disposition": "adapt_coding_handoff_to_repo"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 2010,
+      "level": 3,
+      "heading": "D.2 Hình thức bàn giao mong đợi",
+      "destination": "docs/10_IMPLEMENTATION_BACKLOG.md",
+      "disposition": "adapt_coding_handoff_to_repo"
+    },
+    {
+      "source": "PLAN.md",
+      "line": 2018,
+      "level": 3,
+      "heading": "D.3 Danh sách kiểm tra cuối để tránh xây sai sản phẩm",
+      "destination": "docs/10_IMPLEMENTATION_BACKLOG.md",
+      "disposition": "adapt_coding_handoff_to_repo"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 7,
+      "level": 2,
+      "heading": "1. Bổ sung cơ chế \"Phục hồi ngữ âm theo ngữ cảnh\" (Contextual ASR Recovery) ngay tại tầng NLU",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "hypothesis_not_authoritative_rewrite"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 34,
+      "level": 2,
+      "heading": "2. Xử lý đặc thù \"Ngôn ngữ nói thực tế\" của người Việt (Side-talk, Cắt câu, Phương ngữ)",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "preserve_sidetalk_fragment_numbers_with_guards"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 38,
+      "level": 3,
+      "heading": "2.1. Lời nói ngoài luồng / Nói với người bên cạnh (Side-talk & Background Speech)",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "preserve_sidetalk_fragment_numbers_with_guards"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 50,
+      "level": 3,
+      "heading": "2.2. Câu nói bị cắt làm đôi (Fragmented Utterances / Incremental Slot)",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "preserve_sidetalk_fragment_numbers_with_guards"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 64,
+      "level": 3,
+      "heading": "2.3. Chuẩn hóa Số đếm, Giờ giấc và Phương ngữ 3 miền",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "preserve_sidetalk_fragment_numbers_with_guards"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 79,
+      "level": 2,
+      "heading": "3. Nâng cấp `LocationResolver`: Tìm kiếm bất biến theo Âm vị (Phonetic & Sub-word Search)",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "phonetic_experiment_not_automatic_verification"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 95,
+      "level": 2,
+      "heading": "4. Chiến lược \"Làm rõ thích ứng\" (Adaptive Clarification) thay vì chỉ đếm lượt",
+      "destination": "docs/07_RESPONSE_AND_DELIVERY.md",
+      "disposition": "preserve_adaptive_clarification_with_evidence"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 116,
+      "level": 2,
+      "heading": "5. Tinh chỉnh Luật phân biệt \"Phủ định / Sửa ý / Từ ngữ đệm\" khi ASR mất từ",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "preserve_self_repair_with_ambiguity_guards"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 133,
+      "level": 2,
+      "heading": "6. Nâng cấp `Test Factory` (§14, §15): Phá bỏ giới hạn của Mutator hiện tại",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "extend_mutators_correct_hidden_meaning_oracle"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 167,
+      "level": 2,
+      "heading": "Tóm tắt các chỉnh sửa cần cập nhật ngay vào `PLAN.md`",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "extend_mutators_correct_hidden_meaning_oracle"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 194,
+      "level": 2,
+      "heading": "BẢN BỔ SUNG ĐẶC TẢ KỸ THUẬT (PATCH CHO `PLAN.md` LÊN V2.1)",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "replace_patch_with_canonical_schema_contract"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 196,
+      "level": 3,
+      "heading": "1. Cập nhật §6.2 & §7.8: Schema `NLUResult` và `LocationInput` hỗ trợ phục hồi lỗi ASR",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "replace_patch_with_canonical_schema_contract"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 251,
+      "level": 3,
+      "heading": "2. Cập nhật §7.2 & §18.2: Bổ sung `APPEND_OR_REFINE_SLOT` và Hợp nhất Địa chỉ phân mảnh",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "replace_raw_concat_with_idempotent_component_merge"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 255,
+      "level": 4,
+      "heading": "2.1. Bổ sung vào bảng Dialogue Acts (§7.2)",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "replace_raw_concat_with_idempotent_component_merge"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 263,
+      "level": 4,
+      "heading": "2.2. Cập nhật thuật toán `StateReducer` (§18.2)",
+      "destination": "docs/05_NLU_AND_CONTEXT.md",
+      "disposition": "replace_raw_concat_with_idempotent_component_merge"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 294,
+      "level": 3,
+      "heading": "3. Bổ sung §9.2 & §9.3: Bộ Chuẩn hóa Khẩu ngữ 3 Miền & Mã hóa Âm vị Tiếng Việt (`VniPhonetic`)",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "normalization_scoped_phonetic_requires_benchmark"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 298,
+      "level": 4,
+      "heading": "3.1. Cấu hình Chuẩn hóa Khẩu ngữ Tiếng Việt (`config/spoken_normalizer.vi.yaml`)",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "normalization_scoped_phonetic_requires_benchmark"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 324,
+      "level": 4,
+      "heading": "3.2. Thuật toán Mã hóa Âm vị Tiếng Việt (`src/taxi_ai/geo/phonetic.py`)",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "normalization_scoped_phonetic_requires_benchmark"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 367,
+      "level": 3,
+      "heading": "4. Cập nhật §8.2, §12.2 & §12.5: Chiến lược Làm rõ Thích ứng (Progressive Escalation)",
+      "destination": "docs/07_RESPONSE_AND_DELIVERY.md",
+      "disposition": "preserve_clarification_no_false_noise_or_driver_claim"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 371,
+      "level": 4,
+      "heading": "4.1. Bảng điều phối làm rõ theo bậc",
+      "destination": "docs/07_RESPONSE_AND_DELIVERY.md",
+      "disposition": "preserve_clarification_no_false_noise_or_driver_claim"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 389,
+      "level": 4,
+      "heading": "4.2. Bổ sung vào `config/templates.vi.yaml` (§12.2)",
+      "destination": "docs/07_RESPONSE_AND_DELIVERY.md",
+      "disposition": "preserve_clarification_no_false_noise_or_driver_claim"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 407,
+      "level": 3,
+      "heading": "5. Cập nhật §15.2: Đặc tả 5 Mutators chuyên biệt cho `Test Factory`",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "mutator_acceptance_observable_information"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 427,
+      "level": 3,
+      "heading": "6. Bổ sung vào Checklist nghiệm thu (§19.1)",
+      "destination": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "disposition": "mutator_acceptance_observable_information"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 448,
+      "level": 2,
+      "heading": "PHẦN 1: ĐÁNH GIÁ HIỆN TRẠNG & CÁC ĐIỂM CẦN ĐẬP ĐI XÂY LẠI TRONG KẾ HOẠCH",
+      "destination": "docs/04_CORE_POLICY_MATRIX.md",
+      "disposition": "asymmetry_keep_precision_remove_automatic_center"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 450,
+      "level": 3,
+      "heading": "1.1. Loại bỏ hoàn toàn \"tọa độ chính xác\" & Áp dụng \"Bất đối xứng Điểm Đón – Điểm Đến\"",
+      "destination": "docs/04_CORE_POLICY_MATRIX.md",
+      "disposition": "asymmetry_keep_precision_remove_automatic_center"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 482,
+      "level": 3,
+      "heading": "1.2. Nguyên tắc \"1 Lượt = 1 Địa chỉ\" & Lược bỏ ngữ cảnh thừa (Contextual Ellipsis) như người thật",
+      "destination": "docs/07_RESPONSE_AND_DELIVERY.md",
+      "disposition": "one_decision_not_one_extracted_location_no_forced_origin_first"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 512,
+      "level": 2,
+      "heading": "PHẦN 2: PHƯƠNG ÁN XỬ LÝ CHI TIẾT CHO 3 VÍ DỤ THỰC TẾ CỦA BẠN",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "coaching_keep_spatial_search_experimental"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 514,
+      "level": 3,
+      "heading": "Ví dụ 1: Khách đứng ở nơi xa lạ, không biết là đâu, chỉ nhìn xung quanh và mô tả bằng lời",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "coaching_keep_spatial_search_experimental"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 539,
+      "level": 3,
+      "heading": "Ví dụ 2: Khách đọc nhầm số ngõ không có thật trên một con đường có thật (Bẫy Vietmap Autocomplete)",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "preserve_number_guard_reject_neighbor_coordinate_inference"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 582,
+      "level": 3,
+      "heading": "Ví dụ 3: Khách phát âm sai tên nước ngoài (\"Aeon Mall\" $\\rightarrow$ \"e on mô\", \"Ocean Park\" $\\rightarrow$ \"ô sừn bắc\") hoặc ASR nghe nhầm tên ngắn (\"Bệnh viện E\" $\\rightarrow$ \"bệnh viện em\")",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "spoken_alias_hypotheses_not_fact_or_auto_branch"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 592,
+      "level": 4,
+      "heading": "Lớp 1: Đánh chỉ mục \"Phiên âm bồi tiếng Việt\" (Viet-lish Transliteration Index) cho mọi POI tên nước ngoài",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "spoken_alias_hypotheses_not_fact_or_auto_branch"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 610,
+      "level": 4,
+      "heading": "Lớp 2: Bộ bắt lỗi \"Từ đơn âm & Chữ cái\" bị ASR biến dạng (`Single-Letter Entity Guard`)",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "spoken_alias_hypotheses_not_fact_or_auto_branch"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 627,
+      "level": 4,
+      "heading": "Lớp 3: Tận dụng chính LLM (Qwen3.8-27B) làm bộ giải mã ngữ âm ngược trong Prompt NLU",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "spoken_alias_hypotheses_not_fact_or_auto_branch"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 645,
+      "level": 2,
+      "heading": "TÓM TẮT: BẠN CẦN CẬP NHẬT GÌ VÀO `PLAN.md`?",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "spoken_alias_hypotheses_not_fact_or_auto_branch"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 685,
+      "level": 2,
+      "heading": "VẤN ĐỀ 1: Làm sao để Bot luôn ưu tiên Địa điểm lớn/phổ biến, không bị ASR đánh lừa sang địa điểm nhỏ có tên gần giống?",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "replace_hard_tiers_85pct_with_soft_rank_hard_constraints"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 687,
+      "level": 3,
+      "heading": "1.1. Hiện trạng trong kế hoạch (Vì sao vẫn có nguy cơ chọn sai?)",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "replace_hard_tiers_85pct_with_soft_rank_hard_constraints"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 698,
+      "level": 3,
+      "heading": "1.2. Giải pháp tối ưu: Thuật toán \"Trọng số Độ nổi tiếng đè bẹp Khớp mặt chữ\" (Prominence-Weighted Phonetic Ranking)",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "replace_hard_tiers_85pct_with_soft_rank_hard_constraints"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 702,
+      "level": 4,
+      "heading": "Bước 1: Phân hạng Địa điểm thành 4 Cấp độ Phổ biến (`Prominence Tier`)",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "replace_hard_tiers_85pct_with_soft_rank_hard_constraints"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 717,
+      "level": 4,
+      "heading": "Bước 2: Quy tắc \"Vượt cấp Âm vị\" (Phonetic Promotion Rule)",
+      "destination": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "disposition": "replace_hard_tiers_85pct_with_soft_rank_hard_constraints"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 741,
+      "level": 2,
+      "heading": "VẤN ĐỀ 2: Khi Bot đang hỏi xác nhận mà khách lưỡng lự hoặc hỏi ngược lại (\"ở đâu\", \"quận nào\"...), Bot có bị mất ngữ cảnh không?",
+      "destination": "docs/07_RESPONSE_AND_DELIVERY.md",
+      "disposition": "hold_resume_with_target_version_expiry_no_misbound_yes"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 743,
+      "level": 3,
+      "heading": "2.1. Hiện trạng trong kế hoạch (Lỗ hổng ở đâu?)",
+      "destination": "docs/07_RESPONSE_AND_DELIVERY.md",
+      "disposition": "hold_resume_with_target_version_expiry_no_misbound_yes"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 762,
+      "level": 3,
+      "heading": "2.2. Giải pháp tối ưu: Cơ chế \"Ngăn xếp Tạm dừng & Nối mạch\" (`Pending Confirmation Hold & Resume`)",
+      "destination": "docs/07_RESPONSE_AND_DELIVERY.md",
+      "disposition": "hold_resume_with_target_version_expiry_no_misbound_yes"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 766,
+      "level": 4,
+      "heading": "Quy tắc 1: Bổ sung Act `EXPRESS_UNCERTAINTY` (Khách lưỡng lự về ứng viên bot đưa ra)",
+      "destination": "docs/07_RESPONSE_AND_DELIVERY.md",
+      "disposition": "hold_resume_with_target_version_expiry_no_misbound_yes"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 779,
+      "level": 4,
+      "heading": "Quy tắc 2: Bảo toàn `pending_confirmation` khi khách hỏi ngược (Side-Question on Pending Target)",
+      "destination": "docs/07_RESPONSE_AND_DELIVERY.md",
+      "disposition": "hold_resume_with_target_version_expiry_no_misbound_yes"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 802,
+      "level": 4,
+      "heading": "Quy tắc 3: Phân biệt khách \"Hỏi thăm dò địa điểm mới\" vs \"Đổi ý ngầm\"",
+      "destination": "docs/07_RESPONSE_AND_DELIVERY.md",
+      "disposition": "hold_resume_with_target_version_expiry_no_misbound_yes"
+    },
+    {
+      "source": "PLAN_BONUS.md",
+      "line": 820,
+      "level": 2,
+      "heading": "TÓM TẮT CẬP NHẬT VÀO KẾ HOẠCH",
+      "destination": "docs/07_RESPONSE_AND_DELIVERY.md",
+      "disposition": "hold_resume_with_target_version_expiry_no_misbound_yes"
+    }
+  ]
+}

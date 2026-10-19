@@ -1,0 +1,23 @@
+{
+  "checks_passed": 16,
+  "checks": [
+    "DDL creates all tables; foreign_keys enabled",
+    "one active draft per request",
+    "input identity unique",
+    "atomic rollback of domain booking task response outbox",
+    "atomic retry succeeds after rollback",
+    "durable operation tuple rejects new key retry",
+    "one new-booking task",
+    "one pending question",
+    "cross-request operation cannot reference another draft",
+    "stale CAS affects zero rows",
+    "cancelled turn cannot pass explicit durable guard",
+    "owner generation stale guard affects zero rows",
+    "distinct handoff intents at one booking revision remain separate",
+    "handoff retry cannot change key to duplicate same intent",
+    "support before booking needs no fake booking record",
+    "SQLite integrity and foreign keys clean"
+  ],
+  "database": ":memory:",
+  "limitations": "SQL structure and explicit test queries only; no new runtime implemented"
+}

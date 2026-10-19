@@ -1,0 +1,190 @@
+{
+  "package": "vanuoc",
+  "version": "3.0",
+  "created_at": "2026-10-19T09:22:13.180161+07:00",
+  "algorithm": "sha256",
+  "files": [
+    {
+      "path": "data/original-64.jsonl",
+      "bytes": 38036,
+      "sha256": "5a91a0b06d0f4eb33aa4e301f86030995bedcba1f3c287252b24ba81ff9560da"
+    },
+    {
+      "path": "decisions/OPEN_DECISIONS.md",
+      "bytes": 7891,
+      "sha256": "868f27151271c5b3ecdb80a0513533892568d157454041179167a75ba5488368"
+    },
+    {
+      "path": "docs/01_CORE_CONTRACT.md",
+      "bytes": 21172,
+      "sha256": "516a9bd9528d477ea41b114b84af97955b73e1ff6051969a738e1b3761c8a19f"
+    },
+    {
+      "path": "docs/02_CORE_STATE_MACHINE.md",
+      "bytes": 20308,
+      "sha256": "1059feb096e3d084a41afdbf8f8e300cc4f28b946d460738bf6c4925e87f0ded"
+    },
+    {
+      "path": "docs/03_CORE_TRANSACTION_PROTOCOL.md",
+      "bytes": 23258,
+      "sha256": "0c273b8e7b94ea3195b1b716edb14238e4c9721764a5f71369cf316a7d9ce000"
+    },
+    {
+      "path": "docs/04_CORE_POLICY_MATRIX.md",
+      "bytes": 12409,
+      "sha256": "33a43f7360abc9a9f10163a001ccd77bd295264ea991bfc38708564c7b9f58c6"
+    },
+    {
+      "path": "docs/05_NLU_AND_CONTEXT.md",
+      "bytes": 21152,
+      "sha256": "0074f4dc018173966324b9dc864fd7ffd21e5c471df4822f1974f5aa5185664f"
+    },
+    {
+      "path": "docs/06_LOCATION_AND_KNOWLEDGE.md",
+      "bytes": 19709,
+      "sha256": "eafdaa5e7a0738935a7e30494509858a02cb1acd3d7f26ff84f5f619a485914f"
+    },
+    {
+      "path": "docs/07_RESPONSE_AND_DELIVERY.md",
+      "bytes": 16751,
+      "sha256": "47fe41592fe1a9ece09e1557ffc29c2f002d725796225c83207d4b1d155e53b4"
+    },
+    {
+      "path": "docs/08_TEST_FACTORY_AND_ACCEPTANCE.md",
+      "bytes": 24386,
+      "sha256": "fc622ec63728ca525f33bb71bd0ce9cda1d5b7b6cf0d2726c837a4cd29f1ffdb"
+    },
+    {
+      "path": "docs/09_MIGRATION_AND_CUTOVER.md",
+      "bytes": 16873,
+      "sha256": "5c639ec37c3599eaab1ed55d1668c89bd515df304552c5487301d4c364ddd05b"
+    },
+    {
+      "path": "docs/10_IMPLEMENTATION_BACKLOG.md",
+      "bytes": 8881,
+      "sha256": "36306b7ce12d46eb71b49aa38ecaeffc9f4c26b87717855855c9a87278ac8e58"
+    },
+    {
+      "path": "docs/11_OPERATIONS_PRIVACY_OBSERVABILITY.md",
+      "bytes": 20156,
+      "sha256": "f72dc3b5c4182f88e483a90d798b46d082073617a4b812da0c4f867a54ab2b1e"
+    },
+    {
+      "path": "docs/12_SOURCE_TRACEABILITY.md",
+      "bytes": 15142,
+      "sha256": "6f9332953fcde55879e13d2cb7822b2dde419edb333be1e22585530e21c59543"
+    },
+    {
+      "path": "docs/13_REPO_BASELINE.md",
+      "bytes": 10034,
+      "sha256": "713ef576022782288413338f21753978824f04208401dd00e9ce224c079e59f7"
+    },
+    {
+      "path": "examples/delivery-event.json",
+      "bytes": 729,
+      "sha256": "c9effbbf21e6defd4f5b1f9b885ddb532ceee5767533e3a4d7a47614ddfc96c3"
+    },
+    {
+      "path": "examples/scenarios.jsonl",
+      "bytes": 90051,
+      "sha256": "d1f1b4df47f3ad18536574f33348f242f604197504ff68a64b6fed7bc69fe3a5"
+    },
+    {
+      "path": "examples/storage-target.sql",
+      "bytes": 15790,
+      "sha256": "3778d4249e71502c01799f4f7bfba1de5419ef47676ce23be65e152c1b869e41"
+    },
+    {
+      "path": "examples/turn-input.json",
+      "bytes": 1287,
+      "sha256": "d75d1b7041aa7d54b67a3c68d9fc07346a9810126bbad21b0a9a5f1fe91fafd3"
+    },
+    {
+      "path": "examples/turn-result.json",
+      "bytes": 2409,
+      "sha256": "d602779631596cf475e583c475b8722da0a5a326ec2d6b1723879347cf9abfb2"
+    },
+    {
+      "path": "PLAN_HOP_NHAT.md",
+      "bytes": 32000,
+      "sha256": "c354a66bd49d19d4fae635f84e737e3292b24a0c594661e808feb4578fa02370"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5891,
+      "sha256": "b4abcdcdef037d31b630c8cc726523b2a42f74152c15d45e3fc5c2c844e25bc5"
+    },
+    {
+      "path": "schemas/control-event.schema.json",
+      "bytes": 9476,
+      "sha256": "c22401975d70cc6feb14f18f7195efe52ac0aad7d398bb983b0360015e666a92"
+    },
+    {
+      "path": "schemas/scenario.schema.json",
+      "bytes": 6187,
+      "sha256": "2e4d4bf655267cfc5d096017e3ed6af478fb352b29ae887f206a57a028dae57c"
+    },
+    {
+      "path": "schemas/turn-input.schema.json",
+      "bytes": 8533,
+      "sha256": "76a8098f159069603154f6e94424086b08a9820d4c233d2acc34c52ca5817408"
+    },
+    {
+      "path": "schemas/turn-result.schema.json",
+      "bytes": 21786,
+      "sha256": "b1b82f369e911a3a404bd4b59a6107e31baf8d5fc6f3aa027961b59b590ab0eb"
+    },
+    {
+      "path": "SOURCE_COVERAGE.json",
+      "bytes": 53799,
+      "sha256": "8de2013f3461fa4dd43aa0916ea385b2f7a4fcc702a054d6f43be0738a2fd578"
+    },
+    {
+      "path": "SOURCE_MANIFEST.json",
+      "bytes": 876,
+      "sha256": "c44ef46ded4815bd56357810bceffef4568793ae001fa47f432b2022dd1e500e"
+    },
+    {
+      "path": "sources/PLAN.md",
+      "bytes": 142502,
+      "sha256": "d329914d15f70519664eef6bb4f230325a01f893cd302d7e75837e91b4badb15"
+    },
+    {
+      "path": "sources/PLAN_BONUS.md",
+      "bytes": 67767,
+      "sha256": "cb8de963a8d0917f23584b6a5a2c30bb286bb51ba1bc29a9fde00c4d23ab3038"
+    },
+    {
+      "path": "sources/README.md",
+      "bytes": 1362,
+      "sha256": "b198f4267d6a713b330249432970acbd24d833a0efafbc109e087d7daa6a5400"
+    },
+    {
+      "path": "tools/build_manifests.py",
+      "bytes": 7565,
+      "sha256": "b02226f3ef863c8397bb9744a0f8bd9fc2d4d2b7cba0c26df7acd0f3046a22ca"
+    },
+    {
+      "path": "tools/check_storage_contract.py",
+      "bytes": 7972,
+      "sha256": "b2bbf03f018a5cd1a4c90ab59bfec0c0ca87741649c8423d86f8c26e74f01e5b"
+    },
+    {
+      "path": "tools/validate_package.py",
+      "bytes": 18529,
+      "sha256": "f8d6f956fa3e61e5fc95d8a0903a86e501143789156e356b254162532c9f931e"
+    },
+    {
+      "path": "validation/storage-contract-check.json",
+      "bytes": 968,
+      "sha256": "ce645255e141fc74e3433b6aa353f1301db43a83350330055cca348a333070df"
+    }
+  ],
+  "excluded_from_checksums": [
+    "PACKAGE_MANIFEST.json",
+    "validation/VALIDATION.md",
+    "validation/package-check.json",
+    "AGENTS.md"
+  ],
+  "exclusion_reason": "Manifest avoids self-hash; validation report/results are generated after hash checking; AGENTS.md is agent guide."
+}

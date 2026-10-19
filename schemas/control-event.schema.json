@@ -1,0 +1,438 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.vanuoc.invalid/3.0/control-event.schema.json",
+  "title": "Vanuoc v3.0 - authenticated server control event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "session_id",
+    "request_id",
+    "input_id",
+    "occurred_at",
+    "trusted",
+    "payload"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "3.0"
+    },
+    "kind": {
+      "enum": [
+        "delivery",
+        "interrupt",
+        "timeout",
+        "session_end",
+        "ownership_changed"
+      ]
+    },
+    "session_id": {
+      "$ref": "#/$defs/id"
+    },
+    "request_id": {
+      "$ref": "#/$defs/id"
+    },
+    "input_id": {
+      "$ref": "#/$defs/id"
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "trusted": {
+      "$ref": "#/$defs/trusted"
+    },
+    "payload": {
+      "type": "object"
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "actor_id",
+        "actor_type",
+        "authorized_scopes"
+      ],
+      "properties": {
+        "actor_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+        },
+        "actor_type": {
+          "enum": [
+            "customer",
+            "operator",
+            "system"
+          ]
+        },
+        "authorized_scopes": {
+          "type": "array",
+          "maxItems": 32,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "conversation:read",
+              "conversation:write",
+              "delivery:write",
+              "ownership:write",
+              "request:resume"
+            ]
+          }
+        }
+      }
+    },
+    "trusted": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "owner_generation",
+        "actor",
+        "adapter_id"
+      ],
+      "properties": {
+        "owner_generation": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "actor": {
+          "$ref": "#/$defs/actor"
+        },
+        "adapter_id": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "delivery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_type",
+        "response_id",
+        "segment_id",
+        "playback_id",
+        "mode",
+        "reporter",
+        "reason"
+      ],
+      "properties": {
+        "event_type": {
+          "enum": [
+            "playback_started",
+            "playback_completed",
+            "output_available",
+            "output_unavailable",
+            "playback_interrupted",
+            "playback_failed",
+            "text_presented"
+          ]
+        },
+        "response_id": {
+          "$ref": "#/$defs/id"
+        },
+        "segment_id": {
+          "$ref": "#/$defs/id"
+        },
+        "playback_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "mode": {
+          "enum": [
+            "voice",
+            "text"
+          ]
+        },
+        "reporter": {
+          "enum": [
+            "server_adapter",
+            "client_adapter"
+          ]
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 128
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "voice"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "playback_id": {
+                "$ref": "#/$defs/id"
+              },
+              "event_type": {
+                "not": {
+                  "const": "text_presented"
+                }
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "event_type": {
+                "const": "text_presented"
+              },
+              "playback_id": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "event_type": {
+                "enum": [
+                  "playback_started",
+                  "playback_completed",
+                  "playback_interrupted",
+                  "playback_failed"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "reporter": {
+                "const": "server_adapter"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "interrupt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_turn_id",
+        "new_turn_epoch",
+        "reason"
+      ],
+      "properties": {
+        "target_turn_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "new_turn_epoch": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "reason": {
+          "enum": [
+            "user_speech",
+            "explicit_stop",
+            "new_turn",
+            "operator_takeover",
+            "session_closed"
+          ]
+        }
+      }
+    },
+    "timeout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_turn_id",
+        "question_id",
+        "deadline_at",
+        "reason"
+      ],
+      "properties": {
+        "target_turn_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uuid"
+        },
+        "question_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "deadline_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "reason": {
+          "enum": [
+            "turn_deadline",
+            "question_wait",
+            "session_idle",
+            "asr_final_wait"
+          ]
+        }
+      }
+    },
+    "session_end": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reason"
+      ],
+      "properties": {
+        "reason": {
+          "enum": [
+            "user_end",
+            "transport_disconnected",
+            "admission_expired",
+            "runtime_shutdown",
+            "terminal_complete"
+          ]
+        }
+      }
+    },
+    "ownership_changed": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "previous_generation",
+        "new_generation",
+        "new_owner_type",
+        "reason"
+      ],
+      "properties": {
+        "previous_generation": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "new_generation": {
+          "type": "integer",
+          "minimum": 2
+        },
+        "new_owner_type": {
+          "enum": [
+            "ai",
+            "operator",
+            "none"
+          ]
+        },
+        "reason": {
+          "enum": [
+            "operator_takeover",
+            "resume_claim",
+            "lease_lost",
+            "runtime_shutdown",
+            "operator_release"
+          ]
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "delivery"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/delivery"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "interrupt"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/interrupt"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "timeout"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/timeout"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "session_end"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/session_end"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "ownership_changed"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/ownership_changed"
+          }
+        }
+      }
+    }
+  ],
+  "description": "Only server-authenticated adapters may construct this envelope. No controls are parsed from user text."
+}
